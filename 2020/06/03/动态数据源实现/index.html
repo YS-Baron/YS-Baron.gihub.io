@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="YSBLOG">
 <meta property="og:description" content="动态数据源的实现在程序中使用多个数据源的情况不少见，如何实现动态切换数据源就成了一个问题，下面具体介绍一下如何实现。 问题： 1、如何识别该操作需要哪一个数据库？ 2、识别之后如何进行数据源的选择？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-04T12:32:28.728Z">
+<meta property="og:updated_time" content="2020-06-18T08:01:55.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态数据源切换">
 <meta name="twitter:description" content="动态数据源的实现在程序中使用多个数据源的情况不少见，如何实现动态切换数据源就成了一个问题，下面具体介绍一下如何实现。 问题： 1、如何识别该操作需要哪一个数据库？ 2、识别之后如何进行数据源的选择？">
@@ -126,17 +126,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">6</span></a>
+    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">7</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">3</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">4</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">6</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">7</span></a>
 
   </li>
   </ul>
@@ -199,7 +199,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">修改于</span>
-                <time title="修改时间：2020-06-04 20:32:28" itemprop="dateModified" datetime="2020-06-04T20:32:28+08:00">2020-06-04</time>
+                <time title="修改时间：2020-06-18 16:01:55" itemprop="dateModified" datetime="2020-06-18T16:01:55+08:00">2020-06-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -256,7 +256,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface BaseRepository&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>4、具体实现数据源值得替换，我们在执行dao之前就把数据源名称给写到ThreadLocal里面去，在执行完之后对ThreadLocal进行一个清除。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicDataSourceAspect</span></span>&#123;</span><br><span class="line">    <span class="meta">@Before</span>(target(BaseRepository))</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeDataSource</span><span class="params">(JoinPoint point)</span></span>&#123;</span><br><span class="line">    <span class="comment">//获取改接口上的所有注解</span></span><br><span class="line">    Type[] targetProxyInterfaces = point.point.getTarget().getClass().getGenericInterfaces();</span><br><span class="line">    <span class="keyword">for</span> (Type each : targetProxyInterfaces) &#123;</span><br><span class="line">        <span class="comment">//获取自己定义的DataSourceName注解</span></span><br><span class="line">			DataSourceName annotation = ((Class&lt;?&gt;) each).getAnnotation(DataSourceName<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">null</span> != annotation) &#123;</span><br><span class="line">                <span class="comment">//对注解上的值进行存储</span></span><br><span class="line">				DataSourceContextHolder.setDataSourceName(annotation.value());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@After</span>(target(BaseRepository))</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(JoinPoint point)</span></span>&#123;</span><br><span class="line">        DataSourceContextHolder.clearDataSourceName();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicDataSourceAspect</span></span>&#123;</span><br><span class="line">    <span class="meta">@Before</span>(target(BaseRepository))</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeDataSource</span><span class="params">(JoinPoint point)</span></span>&#123;</span><br><span class="line">    	<span class="comment">//获取改接口上的所有注解</span></span><br><span class="line">    	Type[] targetProxyInterfaces = point.point.getTarget().getClass().getGenericInterfaces();</span><br><span class="line">    	<span class="keyword">for</span> (Type each : targetProxyInterfaces) &#123;</span><br><span class="line">        <span class="comment">//获取自己定义的DataSourceName注解</span></span><br><span class="line">	DataSourceName annotation = ((Class&lt;?&gt;)each).getAnnotation(DataSourceName<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">null</span> != annotation) &#123;</span><br><span class="line">    	<span class="comment">//对注解上的值进行存储</span></span><br><span class="line">    	DataSourceContextHolder.setDataSourceName(annotation.value());</span><br><span class="line">	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@After</span>(target(BaseRepository))</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(JoinPoint point)</span></span>&#123;</span><br><span class="line">        DataSourceContextHolder.clearDataSourceName();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>5、数据源替换，真正的数据源替换，通过spring-jdbc来进行切换，根据determineCurrentLookupKey()的返回值进行查找。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicDataSource</span> <span class="keyword">extends</span> <span class="title">AbstractRoutingDataSource</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> Object <span class="title">determineCurrentLookupKey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> DataSourceContextHolder.getDataSourceName();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -365,20 +365,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
