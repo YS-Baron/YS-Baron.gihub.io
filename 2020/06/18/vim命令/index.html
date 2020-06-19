@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/06/18/vim命令/vim_d2w.gif">
 <meta property="og:image" content="http://yoursite.com/2020/06/18/vim命令/vim_4dd.gif">
 <meta property="og:image" content="http://yoursite.com/2020/06/18/vim命令/vim_cw.gif">
-<meta property="og:updated_time" content="2020-06-18T07:54:09.949Z">
+<meta property="og:updated_time" content="2020-06-19T01:51:47.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim命令">
 <meta name="twitter:description" content="vim基础命令移动：j（下移）、k（上移）、h（左移）、l（右移）; 保存和退出：不保存退出 :q!，保存退出 :wq; 编辑：i（在当前位置插入）、A（在本行最后面插入）、x（删除当前字符）; vim命令组合命令包含动作、个数、位置三部分。">
@@ -195,10 +195,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-06-18 13:38:36 / 修改时间：15:54:09" itemprop="dateCreated datePublished" datetime="2020-06-18T13:38:36+08:00">2020-06-18</time>
+              <time title="创建时间：2020-06-18 13:38:36" itemprop="dateCreated datePublished" datetime="2020-06-18T13:38:36+08:00">2020-06-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">修改于</span>
+                <time title="修改时间：2020-06-19 09:51:47" itemprop="dateModified" datetime="2020-06-19T09:51:47+08:00">2020-06-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -243,11 +249,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">d 删除命令</span><br><span class="line">c 更改类命令</span><br><span class="line"></span><br><span class="line">w 到下一单词前</span><br><span class="line">e 到本单词尾</span><br><span class="line">$ 到本行尾</span><br><span class="line">0 到本行首</span><br></pre></td></tr></table></figure>
 
 <p>比如：删除当前部分到后面第二个单词首,就可以使用 d2w；如未指定个数则默认为1。</p>
-<p><img src="/2020/06/18/vim命令/vim_d2w.gif" alt="vim_d2w"></p>
+<p><img src="/2020/06/18/vim命令/vim_d2w.gif" alt></p>
 <p>当然还有删除整行的操作，输入dd就可以删除当前行（相当于剪切）；如果想删除多行，可在此命令之前加上数字代表要删除的行数，如删除四行4dd。</p>
-<p><img src="/2020/06/18/vim命令/vim_4dd.gif" alt="vim_4dd"></p>
+<p><img src="/2020/06/18/vim命令/vim_4dd.gif" alt></p>
 <p>比如：想要修改当前单词部分，使用cw就达到了删除之后要修改的部分并可以直接输入。</p>
-<p><img src="/2020/06/18/vim命令/vim_cw.gif" alt="vim_cw"></p>
+<p><img src="/2020/06/18/vim命令/vim_cw.gif" alt></p>
 <p>对于误操作的文字当然是有挽救的机会的。vim也提供了相应的命令。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">u 撤回上一次的操作，相当于ctrl+z</span><br><span class="line">U 恢复当前行到之前状态</span><br><span class="line">ctrl+r 撤回你的撤回命令，即使用此命令可以撤回使用u撤回的操作</span><br></pre></td></tr></table></figure>
     </div>
