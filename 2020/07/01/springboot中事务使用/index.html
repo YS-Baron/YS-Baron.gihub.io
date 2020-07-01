@@ -21,20 +21,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="在IDEA中使用thymeleaf出现热部署不成功问题在spring中使用thymeleaf一直热部署不成功，网上的大部分都是springboot的结合方式，最后发现好像是一个缓存没有配置 这里使用的注解的方式配置的，使用xml文件也是一样配置（如第9行代码展示：需要把缓存禁用） 1234567891011@Bean    public SpringResourceTemplateResolver">
-<meta name="keywords" content="thymeleaf">
+  <meta name="description" content="使用事务之前需要注意的点 所使用的数据库必须支持事务，比如mysql中的InnoDB引擎支持事务，而MyISAM则不支持； 方法上面添加@Transactional注解（默认是runtime异常）； 注解只能加在public方法上面； 在同一个类中不能通过内部调用事务方法，即如下写法是行不通的；">
+<meta name="keywords" content="SpringBoot,事务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="idea使用thymeleaf">
-<meta property="og:url" content="http://yoursite.com/2019/08/20/idea使用thymeleaf/index.html">
+<meta property="og:title" content="SpringBoot中事务使用">
+<meta property="og:url" content="http://yoursite.com/2020/07/01/springboot中事务使用/index.html">
 <meta property="og:site_name" content="YSBLOG">
-<meta property="og:description" content="在IDEA中使用thymeleaf出现热部署不成功问题在spring中使用thymeleaf一直热部署不成功，网上的大部分都是springboot的结合方式，最后发现好像是一个缓存没有配置 这里使用的注解的方式配置的，使用xml文件也是一样配置（如第9行代码展示：需要把缓存禁用） 1234567891011@Bean    public SpringResourceTemplateResolver">
+<meta property="og:description" content="使用事务之前需要注意的点 所使用的数据库必须支持事务，比如mysql中的InnoDB引擎支持事务，而MyISAM则不支持； 方法上面添加@Transactional注解（默认是runtime异常）； 注解只能加在public方法上面； 在同一个类中不能通过内部调用事务方法，即如下写法是行不通的；">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-04T12:32:28.727Z">
+<meta property="og:updated_time" content="2020-07-01T08:14:26.183Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="idea使用thymeleaf">
-<meta name="twitter:description" content="在IDEA中使用thymeleaf出现热部署不成功问题在spring中使用thymeleaf一直热部署不成功，网上的大部分都是springboot的结合方式，最后发现好像是一个缓存没有配置 这里使用的注解的方式配置的，使用xml文件也是一样配置（如第9行代码展示：需要把缓存禁用） 1234567891011@Bean    public SpringResourceTemplateResolver">
+<meta name="twitter:title" content="SpringBoot中事务使用">
+<meta name="twitter:description" content="使用事务之前需要注意的点 所使用的数据库必须支持事务，比如mysql中的InnoDB引擎支持事务，而MyISAM则不支持； 方法上面添加@Transactional注解（默认是runtime异常）； 注解只能加在public方法上面； 在同一个类中不能通过内部调用事务方法，即如下写法是行不通的；">
 
-<link rel="canonical" href="http://yoursite.com/2019/08/20/idea使用thymeleaf/">
+<link rel="canonical" href="http://yoursite.com/2020/07/01/springboot中事务使用/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>idea使用thymeleaf | YSBLOG</title>
+  <title>SpringBoot中事务使用 | YSBLOG</title>
   
 
 
@@ -169,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/idea使用thymeleaf/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/01/springboot中事务使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.png">
@@ -182,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          idea使用thymeleaf
+          SpringBoot中事务使用
         </h1>
 
         <div class="post-meta">
@@ -191,16 +191,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-08-20 21:25:14" itemprop="dateCreated datePublished" datetime="2019-08-20T21:25:14+08:00">2019-08-20</time>
+              <time title="创建时间：2020-07-01 15:19:23 / 修改时间：16:14:26" itemprop="dateCreated datePublished" datetime="2020-07-01T15:19:23+08:00">2020-07-01</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">修改于</span>
-                <time title="修改时间：2020-06-04 20:32:28" itemprop="dateModified" datetime="2020-06-04T20:32:28+08:00">2020-06-04</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -217,7 +211,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>592</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -236,9 +230,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="在IDEA中使用thymeleaf出现热部署不成功问题"><a href="#在IDEA中使用thymeleaf出现热部署不成功问题" class="headerlink" title="在IDEA中使用thymeleaf出现热部署不成功问题"></a>在IDEA中使用thymeleaf出现热部署不成功问题</h2><p>在spring中使用thymeleaf一直热部署不成功，网上的大部分都是springboot的结合方式，最后发现好像是一个缓存没有配置</p>
-<p>这里使用的注解的方式配置的，使用xml文件也是一样配置（如第9行代码展示：需要把缓存禁用）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SpringResourceTemplateResolver <span class="title">templateResolver</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        SpringResourceTemplateResolver templateResolver = <span class="keyword">new</span> SpringResourceTemplateResolver();</span><br><span class="line">        templateResolver.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">        templateResolver.setApplicationContext(applicationContext);</span><br><span class="line">        templateResolver.setTemplateMode(<span class="string">"HTML5"</span>);</span><br><span class="line">        templateResolver.setPrefix(<span class="string">"/templates/"</span>);</span><br><span class="line">        templateResolver.setSuffix(<span class="string">".html"</span>);</span><br><span class="line">        templateResolver.setCacheable(<span class="keyword">false</span>);</span><br><span class="line">        <span class="keyword">return</span> templateResolver;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="使用事务之前需要注意的点"><a href="#使用事务之前需要注意的点" class="headerlink" title="使用事务之前需要注意的点"></a>使用事务之前需要注意的点</h1><ol>
+<li>所使用的数据库必须支持事务，比如mysql中的InnoDB引擎支持事务，而MyISAM则不支持；</li>
+<li>方法上面添加@Transactional注解（默认是runtime异常）；</li>
+<li>注解只能加在public方法上面；</li>
+<li>在同一个类中不能通过内部调用事务方法，即如下写法是行不通的；</li>
+</ol>
+<a id="more"></a>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@Slfj</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Service</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> DAO dao;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Transactional</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">a</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">        dao.insert(obj);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">b</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">        a(obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Service service = <span class="keyword">new</span> Service();</span><br><span class="line">        <span class="comment">//方法a 事务能够执行</span></span><br><span class="line">        service.a(<span class="keyword">new</span> Object());</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//方法b 事务不能执行</span></span><br><span class="line">        service.b(<span class="keyword">new</span> Object());  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="多数据源情况下事务的使用"><a href="#多数据源情况下事务的使用" class="headerlink" title="多数据源情况下事务的使用"></a>多数据源情况下事务的使用</h1><ol>
+<li>首先要配置事务管理器，不过在此处配置的数据源是在<a href="/2020/06/03/动态数据源实现/" title="动态数据源切换">动态数据源切换</a>一文中有提到DynamicDataSource数据源；</li>
+<li>在使用@Transactional之前，需要自己手动配置数据源，否则有可能会找不到当前事务所需要的数据源；</li>
+</ol>
+<p>在实际写的过程中，想要在开启事务之前就配置好数据源就避免不了上面第4点所需要注意的事情了，就会存在一个未开启事务的方法在类内调用开启了事务的方法，但是这样会导致事务失效。故当前的办法是可以重新去写一个专门用来处理当前事务的类，然后通过外部调用这种方式来实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Service</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> SaveService saveService;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">        <span class="comment">//手动设置数据源</span></span><br><span class="line">        DataSourceContextHolder.setDataSourceName(<span class="string">"test"</span>);</span><br><span class="line">        saveService.save(obj);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SaveService</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> ADAO adao;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> BDAO bdao;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//所有异常都回滚</span></span><br><span class="line">    <span class="meta">@Transactional</span>(rollbackFor = Exception<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">void</span> <span class="title">save</span>(<span class="title">Object</span> <span class="title">obj</span>)</span>&#123;</span><br><span class="line">        adao.insert(obj);</span><br><span class="line">        bdao.insert(obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当然以上方式只是其中我所了解的一种，如了解到更多会继续更新。</p>
+
     </div>
 
     
@@ -248,7 +262,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/thymeleaf/" rel="tag"><i class="fa fa-tag"></i> thymeleaf</a>
+              <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+              <a href="/tags/事务/" rel="tag"><i class="fa fa-tag"></i> 事务</a>
           </div>
 
         
@@ -257,13 +272,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/07/29/安装ubuntu/" rel="prev" title="安装ubuntu">
-      <i class="fa fa-chevron-left"></i> 安装ubuntu
+    <a href="/2020/06/30/html的那些事/" rel="prev" title="html的那些事">
+      <i class="fa fa-chevron-left"></i> html的那些事
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/06/03/动态数据源实现/" rel="next" title="动态数据源切换">
-      动态数据源切换 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -322,7 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在IDEA中使用thymeleaf出现热部署不成功问题"><span class="nav-number">1.</span> <span class="nav-text">在IDEA中使用thymeleaf出现热部署不成功问题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用事务之前需要注意的点"><span class="nav-number">1.</span> <span class="nav-text">使用事务之前需要注意的点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多数据源情况下事务的使用"><span class="nav-number">2.</span> <span class="nav-text">多数据源情况下事务的使用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
